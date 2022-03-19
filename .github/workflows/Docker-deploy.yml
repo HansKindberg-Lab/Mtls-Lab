@@ -1,0 +1,33 @@
+name: "Docker deploy"
+
+on:
+  #push:
+  #  branches: [ main ]
+  workflow_dispatch:  
+
+jobs:
+  build-and-deploy:
+    name: "Build & deploy"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v2
+      - name: "Set up Docker QEMU"
+        uses: docker/setup-qemu-action@v1
+      - name: "Set up Docker Buildx"
+        uses: docker/setup-buildx-action@v1
+      - name: "Sign in to DockerHub"
+        uses: docker/login-action@v1
+        with:
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+      - name: "Get current date"
+        id: today
+        run: echo "::set-output name=value::$(date +'%Y%m%d')"
+      - name: "Build and push Docker-image"
+        uses: docker/build-push-action@v2
+        with:
+          context: "Source"
+          file: "Source/Application/Dockerfile"
+          push: true
+          tags: hanskindberg/mtls-lab:latest,hanskindberg/mtls-lab:${{ steps.today.outputs.value }}.${{ github.run_number }}

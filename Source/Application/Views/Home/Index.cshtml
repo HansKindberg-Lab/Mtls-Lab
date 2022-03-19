@@ -1,0 +1,10 @@
+﻿@model HomeViewModel
+<div class="card">
+	<div class="card-header">
+		<h1 class="h4 m-0 p-0">IO-Lab</h1>
+	</div>
+	<div class="card-body">
+		<h2 class="h5 mb-0">Client-certificate</h2>
+		<p>@Html.Raw(Model.ClientCertificate?.ToString() ?? "<i>null</i>")</p>
+	</div>
+</div>
