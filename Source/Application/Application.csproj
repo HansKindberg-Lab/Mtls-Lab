@@ -3,7 +3,7 @@
 		<CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<TargetFramework>net5.0</TargetFramework>
-		<UserSecretsId>5492f676-cee7-4f75-8fe5-66ddbaaf61e7</UserSecretsId>
+		<UserSecretsId>6e375749-9384-450d-a4f3-71f13feb4ec6</UserSecretsId>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.15" />
