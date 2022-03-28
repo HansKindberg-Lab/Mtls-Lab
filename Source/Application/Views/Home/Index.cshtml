@@ -1,4 +1,5 @@
-﻿@model HomeViewModel
+﻿@using System.Runtime.InteropServices
+@model HomeViewModel
 <div class="card">
 	<div class="card-header">
 		<h1 class="h4 m-0 p-0">mTLS-lab</h1>
@@ -6,5 +7,18 @@
 	<div class="card-body">
 		<h2 class="h5 mb-0">Client-certificate</h2>
 		<p>@Html.Raw(Model.ClientCertificate?.ToString() ?? "<i>null</i>")</p>
+		<h2 class="h5 mb-0">Environment</h2>
+		<p class="mb-0">
+			<i>This information is temporary and has nothing to do with mTLS.</i>
+		</p>
+		<ul>
+			<li>OS-version: <strong>@Environment.OSVersion</strong></li>
+			<li>OS 64-bit: <strong>@Environment.Is64BitOperatingSystem</strong></li>
+			<li>Framework-description: <strong>@RuntimeInformation.FrameworkDescription</strong></li>
+			<li>OS-architecture: <strong>@RuntimeInformation.OSArchitecture</strong></li>
+			<li>OS-description: <strong>@RuntimeInformation.OSDescription</strong></li>
+			<li>Process-architecture: <strong>@RuntimeInformation.ProcessArchitecture</strong></li>
+			<li>Runtime-identifier: <strong>@RuntimeInformation.RuntimeIdentifier</strong></li>
+		</ul>
 	</div>
 </div>
